@@ -15,7 +15,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import ModelCheckpoint
 from keras.callbacks import ReduceLROnPlateau
 from CNN_Model import LossHistory, buildModel, project_01, normalize_im
-
+from utils.tf import export_SavedModel
 
 # define a function that trains a model for a given data SNR and density
 def train_model(patches, heatmaps, weights_name, meanstd_name):
@@ -173,6 +173,8 @@ def train_model(patches, heatmaps, weights_name, meanstd_name):
 
     model.save_weights('deepStormmodel_weights.h5')  # save just the weights.
 
+    export_SavedModel(model,".")
+    
     return
 
 
