@@ -107,7 +107,7 @@ def train_model(patches, heatmaps, weights_name, meanstd_name):
     change_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5, min_lr=0.00005)
 
     # Model building and complitation
-    model = buildModel((None, None, 1))
+    model = buildModel((psize, psize, 1))
 
     # Create an image data generator for real time data augmentation
     datagen = ImageDataGenerator(

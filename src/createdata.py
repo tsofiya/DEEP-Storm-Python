@@ -82,13 +82,13 @@ def CreateData(cameraPixelSize, Dir, tifName, csvFileName, upSamplingFactor=8, p
         for lIndex in linearIndices:
             index = ind2sub(highResHeight - patchSize, lIndex)
             numEmmiters = np.count_nonzero(
-                spikeImage[index[0]:(index[0] + patchSize + 1), index[1]:(index[1] + patchSize + 1)])
+                spikeImage[index[0]:(index[0] + patchSize), index[1]:(index[1] + patchSize)])
             if (numEmmiters < minEmitters):
                 skipCounter += 1
             else:
-                patches.append(resize[index[0]:(index[0] + patchSize + 1), index[1]:(index[1] + patchSize + 1)])
-                spikes.append(spikeImage[index[0]:(index[0] + patchSize + 1), index[1]:(index[1] + patchSize + 1)])
-                heatmaps.append(heatMapImage[index[0]:(index[0] + patchSize + 1), index[1]:(index[1] + patchSize + 1)])
+                patches.append(resize[index[0]:(index[0] + patchSize), index[1]:(index[1] + patchSize)])
+                spikes.append(spikeImage[index[0]:(index[0] + patchSize), index[1]:(index[1] + patchSize)])
+                heatmaps.append(heatMapImage[index[0]:(index[0] + patchSize), index[1]:(index[1] + patchSize)])
                 exampleCounter += 1
 
         lowRes.imshow(resize, cmap='gray')
@@ -99,6 +99,6 @@ def CreateData(cameraPixelSize, Dir, tifName, csvFileName, upSamplingFactor=8, p
         scat.remove()
         if (exampleCounter > maxExamples):
             break
-
+    plt.close('all')
     return patches, heatmaps
 
