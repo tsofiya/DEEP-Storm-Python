@@ -21,7 +21,7 @@ def CreateData(cameraPixelSize, Dir, tifName, csvFileName, upSamplingFactor=8, p
     # minimal number of emitters in each patch to avoid empty examples in case  of low-density conditions
     minEmitters = 7
 
-    matList = readStackFromTiff(Dir + "/" + tifName)
+    matList = readStackFromTiff(Dir + "\\" + tifName)
     numImages = len(matList)
 
     orgHeight, orgWidth = matList[0].shape
