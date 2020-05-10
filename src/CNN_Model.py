@@ -110,7 +110,7 @@ def CNN(input, names):
 
 # Define the Model building for an arbitrary input size
 def buildModel(input_dim):
-    input_ = Input(shape=(input_dim))
+    input_ = Input(shape=(input_dim),name="CNN_input")
     act_ = CNN(input_, 'CNN')
     density_pred = Convolution2D(1, kernel_size=(1, 1), strides=(1, 1), padding="same", \
                                  activation="linear", use_bias=False, \
